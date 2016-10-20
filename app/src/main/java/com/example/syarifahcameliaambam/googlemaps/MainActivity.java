@@ -1,17 +1,12 @@
 package com.example.syarifahcameliaambam.googlemaps;
 
-import android.*;
-import android.Manifest;
 import android.app.Dialog;
 import android.location.Address;
-import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.net.Uri;
-import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,7 +19,6 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
-
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -36,6 +30,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static com.example.syarifahcameliaambam.googlemaps.R.id.mapTypeTerrain;
+import static com.google.android.gms.internal.zztg.API;
 
 public class MainActivity extends AppCompatActivity
         implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks {
@@ -101,9 +96,9 @@ public class MainActivity extends AppCompatActivity
      //   mGoogleMap.setMyLocationEnabled(true);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                            .addApi(LOCATION_SERVICE.API)
+                            .addApi(API)
                             .addConnectionCallbacks(this)
-                            .addOnConnectionFailedListener(this)
+                            .addOnConnectionFailedListener((GoogleApiClient.OnConnectionFailedListener) this)
                             .build();
 
     }
